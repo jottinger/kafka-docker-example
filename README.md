@@ -6,8 +6,8 @@ docker-compose image.
 
 To run, use the following two commands:
 
-```docker-compose build
-docker-compose up```
+<pre>docker-compose build
+docker-compose up</pre>
 
 It will first build the images necessary to run the application (the `docker
 build` step) and then execute the app with those images.
