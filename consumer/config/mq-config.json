@@ -1,0 +1,10 @@
+{
+  "mode": "production",
+  "connector": "kafka",
+  "kafka": {
+    "brokers": "localhost:9092",
+    "groupId": "consumerGroup",
+    "clientId": "consumerClient",
+    "input": "sample-topic"
+  }
+}
