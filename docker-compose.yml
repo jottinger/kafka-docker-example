@@ -17,7 +17,7 @@ services:
     image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
-  kafka:
+  kafkabroker:
     image: wurstmeister/kafka
     ports:
       - "9092:9092"
@@ -35,12 +35,12 @@ services:
     ports:
       - "3000:3000"
     depends_on: 
-      - "kafka"
+      - "kafkabroker"
   producer:
     build: ./producer
     command: node app/app.js
     ports:
       - "3001:3000"
     depends_on: 
-      - "kafka"
+      - "kafkabroker"
       

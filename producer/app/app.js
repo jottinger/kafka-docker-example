@@ -33,14 +33,15 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000, function () {
-    dns.lookup('kafka', (err, addresses, family) => {
+    dns.lookup('kafkabroker', (err, addresses, family) => {
         winston.info('    kafka addresses:', JSON.stringify(addresses));
-        const data={
+/*        const data={
             clientId: config[config.connector].clientId,
             connectionString: addresses+':9092'
         };
         winston.info(JSON.stringify(data,null,2));
         producer = new Kafka.Producer(data);
+*/
     });
     dns.lookup('zookeeper', (err, addresses, family) => {
         winston.info('zookeeper addresses:', JSON.stringify(addresses));
