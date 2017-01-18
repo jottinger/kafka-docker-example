@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.send('Hello, producer');
+    sendMessage('sample-topic', 'test message');
 });
 
 app.listen(3000, function () {

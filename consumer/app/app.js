@@ -27,10 +27,7 @@ const dataHandler = function (messageSet, topic, partition) {
     );
 };
 
-const strategies = [{
-    subscriptions: [config[config.connector].input],
-    handler: dataHandler
-}];
+var strategies=[];
 
 app.use(bodyParser.json());
 
@@ -40,4 +37,12 @@ app.get('/', function (req, res) {
 
 app.listen(3000, function () {
     winston.info('Example app listening on port 3000 in ' + config.mode + ' mode!');
+    setTimeout(function() {
+
+winston.info("setting up listener");
+    strategies = [{
+    subscriptions: [config[config.connector].input],
+    handler: dataHandler
+}];
+}, 5000);
 });

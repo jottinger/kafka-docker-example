@@ -12,5 +12,3 @@ docker-compose up</pre>
 It will first build the images necessary to run the application (the `docker
 build` step) and then execute the app with those images.
 
-What I see on my machine is that the producer fails, not being able to find
-the sample topic. This is an error. I don't know why it exists.
