@@ -11,10 +11,10 @@ var producer = new Kafka.Producer({
     connectionString: config[config.connector].brokers
 });
 
-const sendMessage = function sendMessage(topic, message) {
+const sendMessage = function sendMessage(kafkaTopic, message) {
     return producer.init().then(function () {
         return producer.send({
-            topic: topic,
+            topic: kafkaTopic,
             message: {
                 value: JSON.stringify(message)
             }
@@ -22,7 +22,7 @@ const sendMessage = function sendMessage(topic, message) {
     })
         .then(function (result) {
             // TODO what happens when a message is sent?
-            winston.info('message sent to ' + topic + ' with result of ' + JSON.stringify(result));
+            winston.info('message sent to ' + kafkaTopic + ' with result of ' + JSON.stringify(result));
         });
 };
 
@@ -36,13 +36,13 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
     dns.lookup('kafkabroker', (err, addresses, family) => {
         winston.info('    kafka addresses:', JSON.stringify(addresses));
-/*        const data={
-            clientId: config[config.connector].clientId,
-            connectionString: addresses+':9092'
-        };
-        winston.info(JSON.stringify(data,null,2));
-        producer = new Kafka.Producer(data);
-*/
+        /*        const data={
+         clientId: config[config.connector].clientId,
+         connectionString: addresses+':9092'
+         };
+         winston.info(JSON.stringify(data,null,2));
+         producer = new Kafka.Producer(data);
+         */
     });
     dns.lookup('zookeeper', (err, addresses, family) => {
         winston.info('zookeeper addresses:', JSON.stringify(addresses));
@@ -50,5 +50,5 @@ app.listen(3000, function () {
     winston.info('Example app listening on port 3000 in ' + config.mode + ' mode!');
     setTimeout(function () {
         sendMessage('sample-topic', 'test message');
-    }, 10000);
+    }, 7000);
 });
