@@ -15,5 +15,8 @@
     "konphyg": "^1.4.0",
     "no-kafka": "^3.1.0",
     "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.1"
   }
 }

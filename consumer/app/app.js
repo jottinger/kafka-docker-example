@@ -1,5 +1,5 @@
-const express=require('express');
-const config=require('konphyg')(__dirname + '/../config')('mq-config');
+const express = require('express');
+const config = require('konphyg')(__dirname + '/../config')('mq-config');
 const winston = require('winston');
 const app = express();
 const bodyParser = require('body-parser');
@@ -27,7 +27,7 @@ const dataHandler = function (messageSet, topic, partition) {
     );
 };
 
-var strategies=[];
+let strategies = [];
 
 app.use(bodyParser.json());
 
@@ -37,12 +37,12 @@ app.get('/', function (req, res) {
 
 app.listen(3000, function () {
     winston.info('Example app listening on port 3000 in ' + config.mode + ' mode!');
-    setTimeout(function() {
+    setTimeout(function () {
 
-winston.info("setting up listener");
-    strategies = [{
-    subscriptions: [config[config.connector].input],
-    handler: dataHandler
-}];
-}, 5000);
+        winston.info("setting up listener");
+        strategies = [{
+            subscriptions: [config[config.connector].input],
+            handler: dataHandler
+        }];
+    }, 5000);
 });
