@@ -43,4 +43,9 @@ services:
       - "3001:3000"
     depends_on: 
       - "kafkabroker"
+  pyconsumer:
+    build: ./pyconsumer
+    command: python /code/code/pyconsumer.py
+    depends_on:
+      - "kafkabroker"
       

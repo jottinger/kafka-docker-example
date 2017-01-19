@@ -1,7 +1,7 @@
 {
   "mode": "production",
-  "connector": "kafka",
-  "kafka": {
+  "connector": "Kafka",
+  "Kafka": {
     "brokers": "kafkabroker:9092",
     "groupId": "producerGroup",
     "clientId": "producerClient",
