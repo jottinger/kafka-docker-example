@@ -32,8 +32,8 @@ services:
   consumer:
     build: ./consumer
     command: node app/app.js
-    ports:
-      - "3000:3000"
+#    ports:
+#      - "3000:3000"
     depends_on: 
       - "kafkabroker"
   producer:
